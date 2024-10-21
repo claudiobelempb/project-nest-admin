@@ -6,7 +6,7 @@ import {User} from '@prisma/client'
 import { UUID } from "crypto";
 
 @UseInterceptors(ClassSerializerInterceptor)
-@Controller('/users')
+@Controller('users')
 export class UserFindByIdControler {
     constructor(
         private prisma: PrismaService
@@ -14,7 +14,7 @@ export class UserFindByIdControler {
    
     @UseGuards(AuthGuard)
     @Get(':id')
-    async hamdle(@Param('id') id: UUID): Promise<User>{
+    async hamdle(@Param('id') id: string): Promise<User>{
         return this.prisma.user.findUnique({where: { id}});
     }
 }

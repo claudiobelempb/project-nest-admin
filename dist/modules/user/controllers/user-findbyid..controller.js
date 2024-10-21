@@ -35,7 +35,7 @@ __decorate([
 ], UserFindByIdControler.prototype, "hamdle", null);
 exports.UserFindByIdControler = UserFindByIdControler = __decorate([
     (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
-    (0, common_1.Controller)('/users'),
+    (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
 ], UserFindByIdControler);
 //# sourceMappingURL=user-findbyid..controller.js.map
