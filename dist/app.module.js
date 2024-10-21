@@ -11,16 +11,8 @@ const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const env_1 = require("./env");
 const auth_module_1 = require("./modules/auth/auth.module");
-const authenticate_controller_1 = require("./modules/auth/controllers/authenticate.controller");
 const prisma_service_1 = require("./shared/prisma/prisma.service");
-const auth_register_ontroller_1 = require("./modules/auth/controllers/auth-register-ontroller");
-const user_profile_controller_1 = require("./modules/user/controllers/user-profile.controller");
-const auth_login_controller_1 = require("./modules/auth/controllers/auth-login.controller");
-const auth_logout_controller_1 = require("./modules/auth/controllers/auth-logout.controller");
-const user_findall_controller_1 = require("./modules/user/controllers/user-findall.controller");
-const user_findbyid__controller_1 = require("./modules/user/controllers/user-findbyid..controller");
-const user_create_controller_1 = require("./modules/user/controllers/user-create.controller");
-const user_update_controller_1 = require("./modules/user/controllers/user-update.controller");
+const users_module_1 = require("./modules/user/users.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -32,18 +24,9 @@ exports.AppModule = AppModule = __decorate([
                 isGlobal: true,
             }),
             auth_module_1.AuthModule,
+            users_module_1.UsersModule,
         ],
-        controllers: [
-            user_findall_controller_1.UserFindAllControler,
-            user_findbyid__controller_1.UserFindByIdControler,
-            user_create_controller_1.UserCreateController,
-            user_profile_controller_1.UserProfileControler,
-            user_update_controller_1.UserUpdateController,
-            authenticate_controller_1.AuthenticateController,
-            auth_register_ontroller_1.AuthRegisterController,
-            auth_login_controller_1.AuthLoginController,
-            auth_logout_controller_1.AuthLogoutControler,
-        ],
+        controllers: [],
         providers: [prisma_service_1.PrismaService],
     })
 ], AppModule);

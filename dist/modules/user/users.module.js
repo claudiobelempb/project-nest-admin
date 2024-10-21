@@ -10,12 +10,28 @@ exports.UsersModule = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("./services/users.service");
 const common_module_1 = require("../../shared/common/common.module");
+const user_delete_controller_1 = require("./controllers/user-delete.controller");
+const prisma_service_1 = require("../../shared/prisma/prisma.service");
+const user_create_controller_1 = require("./controllers/user-create.controller");
+const user_findall_controller_1 = require("./controllers/user-findall.controller");
+const user_findbyid__controller_1 = require("./controllers/user-findbyid..controller");
+const user_profile_controller_1 = require("./controllers/user-profile.controller");
+const user_update_controller_1 = require("./controllers/user-update.controller");
 let UsersModule = class UsersModule {
 };
 exports.UsersModule = UsersModule;
 exports.UsersModule = UsersModule = __decorate([
     (0, common_1.Module)({
-        providers: [users_service_1.UsersService, common_module_1.CommonModule],
+        imports: [],
+        controllers: [
+            user_findall_controller_1.UserFindAllControler,
+            user_findbyid__controller_1.UserFindByIdControler,
+            user_create_controller_1.UserCreateController,
+            user_profile_controller_1.UserProfileControler,
+            user_update_controller_1.UserUpdateController,
+            user_delete_controller_1.UserDeleteController
+        ],
+        providers: [users_service_1.UsersService, common_module_1.CommonModule, prisma_service_1.PrismaService],
         exports: [users_service_1.UsersService],
     })
 ], UsersModule);
