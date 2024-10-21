@@ -1,0 +1,29 @@
+@BaseUrl = http://localhost:3333/api
+# @name RegisterUser
+POST {{BaseUrl}}/users
+Content-Type: application/json
+
+{
+    "first_name": "n",
+    "last_name": "n",
+    "email": "n@n.com",
+    "password": "n",
+    "password_confirm": "n"
+}
+
+###
+
+# @name FindAllUsers
+GET {{BaseUrl}}/users
+Content-Type: application/json
+
+###
+
+# @name authenticate
+POST {{BaseUrl}}/sessions
+Content-Type: application/json
+
+{
+  "email": "cardoso@gmail.com",
+  "password": "123456"
+}
