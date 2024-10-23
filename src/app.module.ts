@@ -5,6 +5,7 @@ import { envSchema } from './env';
 import { AuthModule } from './modules/auth/auth.module';
 import { PrismaService } from './shared/prisma/prisma.service';
 import { UsersModule } from './modules/user/users.module';
+import { RoleModule } from './modules/role/role.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { UsersModule } from './modules/user/users.module';
     }),
     AuthModule,
     UsersModule,
+    RoleModule,
   ],
   controllers: [],
   providers: [PrismaService],

@@ -8,9 +8,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id         String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   first_name String
 
   last_name String
@@ -19,36 +18,35 @@ model User {
 
   password String
 
-  active Boolean @default(true)
-  createdAt DateTime @default(now()) @map("created_at")
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
 
   @@map("user")
 }
 
 model Company {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id   String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name String
 
   email String @unique
 
   password String
 
-  active Boolean @default(true)
-  createdAt DateTime @default(now()) @map("created_at")
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
 
   @@map("company")
 }
 
 model Role {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name String @default("user")
+  id   String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @unique @default("user")
 
-  active Boolean @default(true)
-  createdAt DateTime @default(now()) @map("created_at")
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
 
   @@map("role")
-
 }

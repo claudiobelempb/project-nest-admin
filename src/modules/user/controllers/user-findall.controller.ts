@@ -36,23 +36,18 @@ export class UserFindAllControler {
       this.prisma.user.findMany({
         skip,
         take,
-        select: {
-          id: true,
-          first_name: true,
-          last_name: true,
-          email: true,
-          active: true,
-          createdAt: true,
-        }
       }),
       this.prisma.user.count(),
     ]);
 
     return {
-      content: result,
+      content: result.map((user) => {
+        const { password, updatedAt, ...data } = user;
+        return data;
+      }),
       page,
       last_page: Math.ceil(total / take),
-      total
+      total,
     };
   }
 }

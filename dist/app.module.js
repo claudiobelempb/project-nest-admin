@@ -13,6 +13,7 @@ const env_1 = require("./env");
 const auth_module_1 = require("./modules/auth/auth.module");
 const prisma_service_1 = require("./shared/prisma/prisma.service");
 const users_module_1 = require("./modules/user/users.module");
+const role_module_1 = require("./modules/role/role.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -25,6 +26,7 @@ exports.AppModule = AppModule = __decorate([
             }),
             auth_module_1.AuthModule,
             users_module_1.UsersModule,
+            role_module_1.RoleModule,
         ],
         controllers: [],
         providers: [prisma_service_1.PrismaService],
