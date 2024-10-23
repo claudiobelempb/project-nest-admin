@@ -49,7 +49,7 @@ let UserCreateController = class UserCreateController {
                 first_name,
                 last_name,
                 email,
-                password: hashed
+                password: hashed,
             },
             select: {
                 first_name: true,
@@ -57,7 +57,7 @@ let UserCreateController = class UserCreateController {
                 email: true,
                 active: true,
                 createdAt: true,
-            }
+            },
         });
     }
 };

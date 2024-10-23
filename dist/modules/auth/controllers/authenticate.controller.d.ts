@@ -5,13 +5,13 @@ export declare const authenticateSchema: z.ZodObject<{
     email: z.ZodString;
     password: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-    name?: string;
     email?: string;
     password?: string;
+    name?: string;
 }, {
-    name?: string;
     email?: string;
     password?: string;
+    name?: string;
 }>;
 type authenticateSchema = z.infer<typeof authenticateSchema>;
 export declare class AuthenticateController {

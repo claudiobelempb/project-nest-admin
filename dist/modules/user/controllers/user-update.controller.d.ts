@@ -5,13 +5,13 @@ export declare const updateUserSchema: z.ZodObject<{
     last_name: z.ZodString;
     email: z.ZodString;
 }, "strip", z.ZodTypeAny, {
+    email?: string;
     first_name?: string;
     last_name?: string;
-    email?: string;
 }, {
+    email?: string;
     first_name?: string;
     last_name?: string;
-    email?: string;
 }>;
 type updateUserSchema = z.infer<typeof updateUserSchema>;
 export declare class UserUpdateController {

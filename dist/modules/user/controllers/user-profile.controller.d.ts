@@ -7,9 +7,9 @@ export declare class UserProfileControler {
     constructor(prisma: PrismaService, jwtService: JwtService);
     hamdle(request: Request): Promise<{
         email: string;
+        id: string;
         first_name: string;
         last_name: string;
-        id: string;
         active: boolean;
         createdAt: Date;
     }>;

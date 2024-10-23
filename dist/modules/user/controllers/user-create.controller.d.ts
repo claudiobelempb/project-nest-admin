@@ -7,16 +7,16 @@ export declare const createUserSchema: z.ZodObject<{
     password: z.ZodString;
     password_confirm: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-    first_name?: string;
-    last_name?: string;
     email?: string;
     password?: string;
+    first_name?: string;
+    last_name?: string;
     password_confirm?: string;
 }, {
-    first_name?: string;
-    last_name?: string;
     email?: string;
     password?: string;
+    first_name?: string;
+    last_name?: string;
     password_confirm?: string;
 }>;
 type createUserSchema = z.infer<typeof createUserSchema>;
