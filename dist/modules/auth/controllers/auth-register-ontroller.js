@@ -38,7 +38,7 @@ let AuthRegisterController = class AuthRegisterController {
         const userWithSameEmail = await this.prisma.user.findUnique({
             where: {
                 email,
-            }
+            },
         });
         if (userWithSameEmail) {
             throw new common_1.ConflictException('User with same e-mail already exists.');
@@ -48,14 +48,15 @@ let AuthRegisterController = class AuthRegisterController {
                 first_name,
                 last_name,
                 email,
-                password: hashed
+                password: hashed,
+                roleId: '93f52dcd-be11-47f6-891b-ec7883c6c9a8',
             },
             select: {
                 first_name: true,
                 last_name: true,
                 email: true,
                 active: true,
-            }
+            },
         });
     }
 };

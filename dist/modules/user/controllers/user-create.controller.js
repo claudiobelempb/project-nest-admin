@@ -18,13 +18,13 @@ const zod_1 = require("zod");
 const common_1 = require("@nestjs/common");
 const zod_validation_pipe_1 = require("../../../shared/pipes/zod-validation-pipe");
 const prisma_service_1 = require("../../../shared/prisma/prisma.service");
-const auth_guard_1 = require("../../auth/auth.guard");
 exports.createUserSchema = zod_1.z.object({
     first_name: zod_1.z.string(),
     last_name: zod_1.z.string(),
     email: zod_1.z.string().email(),
     password: zod_1.z.string(),
     password_confirm: zod_1.z.string(),
+    role_id: zod_1.z.string().optional(),
 });
 let UserCreateController = class UserCreateController {
     constructor(prisma) {
@@ -50,12 +50,14 @@ let UserCreateController = class UserCreateController {
                 last_name,
                 email,
                 password: hashed,
+                roleId: request.role_id,
             },
             select: {
                 first_name: true,
                 last_name: true,
                 email: true,
                 active: true,
+                roleId: true,
                 createdAt: true,
             },
         });
@@ -66,14 +68,12 @@ __decorate([
     (0, common_1.Post)(),
     (0, common_1.HttpCode)(201),
     (0, common_1.UsePipes)(new zod_validation_pipe_1.ZodValidationPipe(exports.createUserSchema)),
-    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UserCreateController.prototype, "handle", null);
 exports.UserCreateController = UserCreateController = __decorate([
-    (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
     (0, common_1.Controller)('/users'),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
 ], UserCreateController);

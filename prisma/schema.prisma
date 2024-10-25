@@ -1,11 +1,11 @@
-generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["omitApi"]
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["omitApi"]
 }
 
 model User {
@@ -22,7 +22,11 @@ model User {
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
 
-  @@map("user")
+  roleId String @map("role_id") @db.Uuid
+  role   Role?  @relation(fields: [roleId], references: [id])
+  // roles     UserToRoles[]
+
+  @@map("tb_user")
 }
 
 model Company {
@@ -37,7 +41,7 @@ model Company {
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
 
-  @@map("company")
+  @@map("tb_company")
 }
 
 model Role {
@@ -47,6 +51,19 @@ model Role {
   active    Boolean   @default(true)
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
+  // users     UserToRoles[]
 
-  @@map("role")
+  users User[]
+
+  @@map("tb_role")
 }
+
+// model UserToRoles {
+//   userId String @map("user_id") @db.Uuid
+//   roleId String @map("role_id") @db.Uuid
+//   role   Role   @relation(fields: [roleId], references: [id])
+//   user   User   @relation(fields: [userId], references: [id])
+
+//   @@id([userId, roleId])
+//   @@map("tb_user_roles")
+// }

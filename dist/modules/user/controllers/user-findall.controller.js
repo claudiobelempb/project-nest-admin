@@ -32,7 +32,9 @@ let UserFindAllControler = class UserFindAllControler {
         return {
             content: result.map((user) => {
                 const { password, updatedAt, ...data } = user;
-                return data;
+                return {
+                    ...data,
+                };
             }),
             page,
             last_page: Math.ceil(total / take),
